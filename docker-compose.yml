@@ -1,0 +1,15 @@
+version: '3'
+services:
+  activemq:
+    image: vromero/activemq-artemis
+    ports:
+      - 8161:8161 # Web console
+      - 61616:61616 # AMQP, OpenWire, STOMP, MQTT
+      - 5672:5672 # AMQP
+      - 61613:61613 # STOMP
+      - 1883:1883 # MQTT
+    volumes:
+      - ./data:/tmp/data # default = ./data:/var/lib/artemis/data
+    environment:
+      - ARTEMIS_USERNAME=user
+      - ARTEMIS_PASSWORD=password
